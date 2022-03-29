@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <div class="video-container">
+    <div class="color-overlay"></div>
+    <video autoplay muted loop poster="{% static '/images/cover.jpeg' %}">
+      <source src="{% static '/images/background.mp4' %}" type="video/mp4">
+    </video>
+  </div>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>E-chain</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+  <link rel="stylesheet" href="{% static '/bootstrap/bootstrap.css%' %}">
+</head>
+
+<body>
+  <main>
+    <section class="glass">
+      <div class="dashboard">
+        <div class="user">
+          <img src="{% static '/images/profile.png' %}" alt="user">
+          <h3>{{user.first_name}} {{user.last_name}}</h3>
+          <p>{{user.email}}</p>
+        </div>
+
+        <div class="links">
+          <div class="link">
+            <a href="add_evidence">
+              <img src="{% static '/images/plus.png' %}" alt="link" srcset="">
+              <h2>Add Evidence</h2>
+            </a>
+          </div>
+          <div class="link">
+            <a href="cases">
+              <img src="{% static '/images/case.png' %}" alt="link" srcset="">
+              <h2>Change Case</h2>
+            </a>
+          </div>
+          <div class="link">
+            <a href="">
+              <img src="{% static '/images/closed.png' %}" alt="link" srcset="">
+              <h2>View a closed case</h2>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="logout">
+          <a href="logout">
+            <img src="{% static '/images/logout.png' %}" alt="Logout" srcset="">
+            <h2>Logout</h2>
+          </a>
+        </div>
+      </div>
+
+
+      </div>
+      <div class="evidence">
+        <div class="status">
+          <h1>Filed Evidence</h1>
+        </div>
+        <div class="search">
+          <input type="text" name="search" id="" placeholder="Search...">
+        </div>
+        <div class="cards">
+          {% for evidence in evidences reversed %}
+          <div class="card">
+            <a href="/s_evidence/{{evidence.id}}">
+              <img src="{% static '/images/evidence.png' %}" alt="" srcset="">
+              <div class="card-info">
+                <h2>{{evidence.caseNumber}}</h2>
+                <p>{{evidence.date}}</p>
+            </a>
+            <a href="integrity">
+              <p class="add-evidencelink" style=" color: green;">Check Integrity</p>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </section>
+  </main>
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+</body>
+
+<script src="{% static '/bootstrap/bootstrap.js' %}"></script>
+
+</html>

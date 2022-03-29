@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>E-chain</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<body>
+  <main>
+
+    <div class="video-container">
+      <div class="color-overlay"></div>
+      <video autoplay muted loop poster="{% static '/images/cover.jpeg' %}">
+        <source src="{% static '/images/background.mp4' %}" type="video/mp4">
+      </video>
+    </div>
+    
+    <section class="glass">
+      <div class="dashboard">
+        <div class="user">
+          <img src="{% static '/images/profile.png' %}" alt="user">
+          <h3>{{user.first_name}} {{user.last_name}}</h3>
+          <p>{{user.email}}</p>
+        </div>
+
+        <div class="links">
+          <div class="link">
+            <a href="{% url 'create_case' %}">
+              <img src="{% static '/images/plus.png' %}" alt="link" srcset="">
+              <h2>Create a Case</h2>
+            </a>
+          </div>
+          <div class="link">
+            <a href="cases">
+              <img src="{% static '/images/case.png' %}" alt="link" srcset="">
+              <h2>Work on Existing case</h2>
+            </a>
+          </div>
+          <div class="link">
+            <a href="">
+              <img src="{% static '/images/closed.png' %}" alt="link" srcset="">
+              <h2>View a closed case</h2>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="logout">
+          <a href="logout">
+            <img src="{% static '/images/logout.png' %}" alt="Logout" srcset="">
+            <h2>Logout</h2>
+          </a>
+        </div>
+      </div>
+
+
+      </div>
+      <div class="evidence">
+        <div class="status">
+          <h1>E-chain</h1>
+          <p>A secure chain of evidence</p>
+        </div>
+
+        <div class="cards">
+          <h1>Choose an option to get started</h1>
+        </div>
+
+        <div class="cards">
+          <h2>Recently added cases</h2>
+          {% for case in cases %}
+          <div class="card">
+            <img src="{% static '/images/existing-case.png' %}" alt="" srcset="">
+            <div class="card-info">
+              <h2>{{case.caseNumber}}</h2>
+              <p>{{case.starting_date}}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+    </section>
+  </main>
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+</body>
+
+</html>

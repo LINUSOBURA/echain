@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>E-chain</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<body>
+  <main>
+
+    <div class="video-container">
+      <div class="color-overlay"></div>
+      <video autoplay muted loop poster="{% static '/images/cover.jpeg' %}">
+        <source src="{% static '/images/background.mp4' %}" type="video/mp4">
+      </video>
+    </div>
+
+    <section class="glass">
+      <div class="dashboard">
+        <div class="user">
+          <img class="logo" src="{% static '/images/logo.png' %}" alt="user">
+          <h3>Welcome</h3>
+          <p></p>
+        </div>
+
+        <div class="links">
+          <div class="link">
+            <h2>Please login to continue</h2>
+          </div>
+          <div class="link">
+            <a href="#">
+              <img src="{% static '/images/case.png' %}" alt="link" srcset="">
+              <h2>News</h2>
+            </a>
+          </div>
+          <div class="link">
+            <a href="">
+              <img src="{% static '/images/closed.png' %}" alt="link" srcset="">
+              <h2>View a closed case</h2>
+            </a>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      </div>
+      <div class="evidence">
+        <div class="status">
+          <h1>E-chain</h1>
+          <p>A secure chain of evidence</p>
+        </div>
+
+        <div class="case">
+          <h2>Login</h2>
+          <br>
+          <p>If you don't have login details, request <a
+              href="mailto:linusobura@gmail.com subject:New Login details request" style="color:black">here</a></p>
+          <br>
+          {% for message in messages %}
+          <h5 class="error">{{message}}</h5>
+          {% endfor %}
+        </div>
+
+        <div class="card">
+          <div class="form">
+            <form action="" method="POST">
+              {% csrf_token %}
+              <h3>Username</h3>
+              <input class="inp" type="text" name="username" />
+              <h3>Password</h3>
+              <input type="password" name="password" id="">
+              <br>
+              <br>
+              <input class="submit" type="submit" value="Login">
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+</body>
+
+</html>

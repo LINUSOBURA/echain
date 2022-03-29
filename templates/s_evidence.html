@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>E-chain</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<body>
+  <main>
+
+    <div class="video-container">
+      <div class="color-overlay"></div>
+      <video autoplay muted loop poster="{% static '/images/cover.jpeg' %}">
+        <source src="{% static '/images/background.mp4' %}" type="video/mp4">
+      </video>
+    </div>
+    
+    <section class="glass">
+      <div class="dashboard">
+        <div class="user">
+          <img src="{% static '/images/profile.png' %}" alt="user">
+          <h3>{{user.first_name}} {{user.last_name}}</h3>
+          <p>{{user.email}}</p>
+        </div>
+
+        <div class="links">
+          <div class="link">
+            <a href="add_evidence">
+            <img src="{% static '/images/plus.png' %}" alt="link" srcset="">
+            <h2>Add Evidence</h2>
+            </a>
+          </div>
+          <div class="link">
+            <a href="cases">
+            <img src="{% static '/images/case.png' %}" alt="link" srcset="">
+            <h2>Change Case</h2>
+            </a>
+          </div>
+          <div class="link">
+            <a href="">
+            <img src="{% static '/images/closed.png' %}" alt="link" srcset="">
+            <h2>View a closed case</h2>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      </div>
+      <div class="evidence case">
+        
+        <div class="status">
+          <img src="{% static '/images/logo.png' %}" alt="" srcset="">
+          <h2>Case Number: {{evidences.caseNumber}}</h2> <br>
+          <p style =" color: black;">Created by: {{evidences.creator}}</p> <br>
+          <p style =" color: black;">Created on: {{evidences.date}}</p> <br>
+          <p style =" color: black;">Description: {{evidences.description}}</p> <br>
+        </div>
+
+          
+      </div>
+    </section>
+  </main>
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>E-chain</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<body>
+  <main>
+    <section class="glass">
+      <div class="dashboard">
+        <div class="user">
+          <img src="{% static '/images/profile.png' %}" alt="user">
+          <h3>{{user.first_name}} {{user.last_name}}</h3>
+          <p>{{user.email}}</p>
+        </div>
+
+        <div class="links">
+          <div class="link">
+            <a href="create_case">
+              <img src="{% static '/images/plus.png' %}" alt="link" srcset="">
+              <h2>Create a Case</h2>
+            </a>
+          </div>
+          <div class="link">
+            <a href="">
+              <img src="{% static '/images/case.png' %}" alt="link" srcset="">
+              <h2>Change Case</h2>
+            </a>
+          </div>
+          <div class="link">
+            <a href="cases">
+              <img src="{% static '/images/closed.png' %}" alt="link" srcset="">
+              <h2>View open cases</h2>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="logout">
+          <a href="logout">
+            <img src="{% static '/images/logout.png' %}" alt="Logout" srcset="">
+            <h2>Logout</h2>
+          </a>
+        </div>
+      </div>
+
+
+      </div>
+      <div class="evidence">
+        <div class="status">
+          <h1>Closed Cases</h1>
+        </div>
+
+        <div class="cards">
+          {% for case in cases reversed %}
+
+          {% if case_open == True %}
+
+          <div class="card">
+            <a href="/case/{{case.id}}">
+              <img src="{% static '/images/existing-case.png' %}" alt="" srcset="">
+              <div class="card-info">
+                <h2>{{case.caseNumber}}</h2>
+                <p>{{case.starting_date}}</p>
+              </div>
+
+            </a>
+            <a href="add_evidence">
+              <p class="add-evidencelink" style=" color: green;">Attach evidence</p>
+            </a>
+          </div>
+          {% endif %}
+
+
+
+          {% endfor %}
+
+        </div>
+    </section>
+  </main>
+  <div class="circle1"></div>
+  <div class="circle2"></div>
+</body>
+
+</html>

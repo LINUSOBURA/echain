@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>E-chain</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+</head>
+
+<body>
+    <main>
+
+        <div class="video-container">
+            <div class="color-overlay"></div>
+            <video autoplay muted loop poster="{% static '/images/cover.jpeg' %}">
+              <source src="{% static '/images/background.mp4' %}" type="video/mp4">
+            </video>
+          </div>
+          
+        <section class="glass">
+            <div class="dashboard">
+                <div class="user">
+                    <img src="{% static '/images/profile.png' %}" alt="user">
+                    <h3>{{user.first_name}} {{user.last_name}}</h3>
+                    <p>{{user.email}}</p>
+                </div>
+
+                <div class="links">
+                    <div class="link">
+                        <a href="cases">
+                            <img src="{% static '/images/existing-case.png' %}" alt="link" srcset="">
+                            <h2>Existing Cases</h2>
+                        </a>
+                    </div>
+                    <div class="link">
+                        <a href="">
+                            <img src="{% static '/images/case.png' %}" alt="link" srcset="">
+                            <h2>News</h2>
+                        </a>
+                    </div>
+                    <div class="link">
+                        <a href="">
+                            <img src="{% static '/images/closed.png' %}" alt="link" srcset="">
+                            <h2>View Closed Case</h2>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="logout">
+                    <a href="logout">
+                        <img src="{% static '/images/logout.png' %}" alt="Logout" srcset="">
+                        <h2>Logout</h2>
+                    </a>
+                </div>
+            </div>
+
+
+            </div>
+            <div class="evidence">
+                <div class="status">
+                    <h1>Create Case</h1>
+                </div>
+
+                <div class="case">
+                    <h2>Case</h2>
+                </div>
+
+                <div class="card">
+                    <div class="form">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <h3>Case Number</h3>
+                            <input class="inp" type="text" name="caseNumber" />
+                            <h3>Case Creator</h3>
+                            <input class="inp" type="text" name="creator" value="{{user.first_name}} {{user.last_name}}"
+                                readonly="True" />
+                            <h3>Case starting Date</h3>
+                            <input type="date" name="date" id="" autocomplete="on" readonly="True">
+                            <br>
+                            <br>
+                            <input class="submit" type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+</body>
+
+</html>
